@@ -33,7 +33,7 @@ docker run --rm -it --privileged \
 
 **One-click Scan Report:** Supports running one-off containers, quickly performs server security scans, and promptly issues a security scan report of the container image.
 
-**Support for Various Image Repositories:** Supports mainstream Docker Registry, Harbor, JFrog, ACR, SWR. Also, it has good support for private cloud scenarios, including Huawei's and Alibaba's private clouds, Boyun, Lingque, Miaoyun, KubeSphere, and many more.
+**Support for Various Image Repositories:** Supports mainstream Docker Registry, Harbor, JFrog, ACR, SWR. Also, it has good support for private cloud scenarios, including Huawei's and Alibaba's private clouds, BoCloud, Alauda, Miaoyun, KubeSphere, and many more.
 
 # Running Fast Scanner
 

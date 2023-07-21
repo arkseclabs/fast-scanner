@@ -40,7 +40,7 @@ curl https://raw.githubusercontent.com/arkseclabs/fast-scanner/main/scripts/scan
 
 * **一键扫描出报告：** 支持运行一次性容器，快速对服务器进行安全扫描，快速出具容器镜像的扫描安全报告
 
-* **多种镜像仓库支持：** 支持主流的 Docker Registry、Harbor、JFrog、ACR、SWR。同时私有云场景支持也很好，华为阿里的私有云、博云、灵鹊、秒云、KubeSphere 以及更多
+* **多种镜像仓库支持：** 支持主流的 Docker Registry、Harbor、JFrog、ACR、SWR。同时私有云场景支持也很好，华为阿里的私有云、博云、灵雀、秒云、KubeSphere 以及更多
 
 # 运行 Fast Scanner
 
