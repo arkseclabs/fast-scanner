@@ -80,7 +80,7 @@ ctr run --rm -t \
 
 ```yaml
 # @.harbor.enabled 启用该登录凭证
-# @.harbor.config.insecure 远程镜像仓库的 TLS 合法性，如果 TLS 不合法，则需要更改此值为 false
+# @.harbor.config.insecure 远程镜像仓库的 TLS 合法性，如果是不安全的镜像仓库，需要修改此值为 true
 # @.harbor.config.address 远程镜像仓库的 URL
 # @.harbor.config.username 用户
 # @.harbor.config.password 密码
