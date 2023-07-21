@@ -1,0 +1,72 @@
+docker_registry:
+  enabled: false
+  config:
+    insecure: false
+    address: "http://docker-registry.arksec.cn"
+    username: "admin"
+    password: "123456"
+
+harbor:
+  enabled: true
+  config:
+    insecure: false
+    address: "https://registry.arksec.cn"
+    username: "yitong.bai"
+    password: "Arksec@123"
+
+ali:
+  enabled: false
+  config:
+    insecure: false
+    address: "https://ali-registry.cn"
+    accessKey: "ali_access_key"
+    accessSecret: "ali_access_secret"
+
+alie:
+  enabled: false
+  config:
+    insecure: false
+    address: "https://alie-registry.cn"
+    accessKey: "alie_access_key"
+    accessSecret: "alie_access_secret"
+    instanceID: "alie_instance_id"
+
+huawei:
+  enabled: false
+  config:
+    registerUserName: "arksec"
+    registerPassword: "Arksrc.cn"
+    registerUrl: "https://registry.arksrc.cn"
+    inSecure: false
+    authType: "token/aksk"
+    accessKey: "huawei_access_key"
+    accessSecret: "huawei_access_secret"
+    region: "huawei_region"
+    authEndpoint: "huawei_auth_endpoint"
+    iamUser: "huawei_iam_user"
+    iamPassword: "huawei_iam_password"
+    iamDomainName: "huawei_iam_domain_name"
+
+jfrog:
+  enabled: false
+  config:
+    insecure: false
+    address: "https://jfrog-registry.cn"
+    username: "admin"
+    password: "123456"
+
+miayunv2:
+  enabled: false
+  config:
+    insecure: false
+    address: "https://miayunv2-registry.cn"
+    username: "admin"
+    password: "123456"
+
+other:
+  enabled: false
+  config:
+    insecure: false
+    address: "http://other-registry.cn"
+    username: "admin"
+    password: "123456"
