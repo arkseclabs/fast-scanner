@@ -15,7 +15,7 @@ docker run --rm -it --privileged \
   -e RUNTIME=docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/reports:/app/reports \
-  docker.io/arksec/fast-scanner:v1.0.0
+  docker.io/arksec/fast-scanner:latest
 ```
 
 或者，使用位于阿里云的 fast-scanner 镜像
@@ -25,7 +25,7 @@ docker run --rm -it --privileged \
   -e RUNTIME=docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/reports:/app/reports \
-  registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
+  registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner:latest
 ```
 
 <!-- OR
@@ -55,18 +55,18 @@ docker run --rm -it --privileged \
   -e RUNTIME=docker \
   -v <path_to_docker_socket>:/var/run/docker.sock \
   -v $(pwd)/reports:/app/reports \
-  docker.io/arksec/fast-scanner:v1.0.0
+  docker.io/arksec/fast-scanner:latest
 ```
 
 如果你正在使用 containerd 作为容器运行时，你需要把 containerd 的 socket 挂载到扫描器容器内，其中 socket 的默认路径是 `/run/containerd/containerd.sock`。然后，利用 `ctr` 工具创建 containerd 场景的扫描容器。
 
 ```bash
-ctr images pull docker.io/arksec/fast-scanner:v1.0.0
+ctr images pull docker.io/arksec/fast-scanner:latest
 ctr run --rm -t \
   --env RUNTIME=containerd \
   --mount type=bind,src=<path_to_containerd_socket>,dst=/run/containerd/containerd.sock,options=rbind:rw \
   --mount type=bind,src=$(pwd)/reports,dst=/app/reports,options=rbind:rw \
-  docker.io/arksec/fast-scanner:v1.0.0 fast-scanner-container
+  docker.io/arksec/fast-scanner:latest fast-scanner-container
 
 ```
 
@@ -101,7 +101,7 @@ docker run --rm -it --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/config-example.yaml:/app/config/config.yaml \
   -v $(pwd)/reports:/app/reports \
-  docker.io/arksec/fast-scanner:v1.0.0
+  docker.io/arksec/fast-scanner:latest
 ```
 
 ## 获取扫描报告
@@ -146,14 +146,14 @@ docker run --rm -it --privileged \
 我们在公共镜像仓库中提供了众多区域分布的镜像。根据您的地理位置，您可以选择最近或最适合的仓库进行镜像拉取。
 
 ```
-docker.io/arksec/fast-scanner:v1.0.0
-registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
-registry.cn-shanghai.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
-registry.cn-hangzhou.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
-registry.cn-huhehaote.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
-registry.ap-northeast-1.aliyuncs.com/arksecurity/fast-scanner:v1.0.0    // 日本东京
-registry.us-west-1.aliyuncs.com/arksecurity/fast-scanner:v1.0.0    // 美国硅谷
-registry.me-east-1.aliyuncs.com/arksecurity/fast-scanner:v1.0.0    // 阿联酋迪拜
+docker.io/arksec/fast-scanner:latest
+registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner:latest
+registry.cn-shanghai.aliyuncs.com/arksecurity/fast-scanner:latest
+registry.cn-hangzhou.aliyuncs.com/arksecurity/fast-scanner:latest
+registry.cn-huhehaote.aliyuncs.com/arksecurity/fast-scanner:latest
+registry.ap-northeast-1.aliyuncs.com/arksecurity/fast-scanner:latest    // 日本东京
+registry.us-west-1.aliyuncs.com/arksecurity/fast-scanner:latest    // 美国硅谷
+registry.me-east-1.aliyuncs.com/arksecurity/fast-scanner:latest    // 阿联酋迪拜
 ```
 
 # 技术交流群

@@ -15,7 +15,7 @@ docker run --rm -it --privileged \
   -e RUNTIME=docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/reports:/app/reports \
-  docker.io/arksec/fast-scanner:v1.0.0
+  docker.io/arksec/fast-scanner:latest
 ```
 Alternatively, you can use the "fast-scanner" image located on Alibaba Cloud (阿里云) to perform container image scanning.
 
@@ -24,7 +24,7 @@ docker run --rm -it --privileged \
   -e RUNTIME=docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/reports:/app/reports \
-  registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
+  registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner:latest
 ```
 
 # The highlights of Fast Scanner
@@ -48,18 +48,18 @@ docker run --rm -it --privileged \
   -e RUNTIME=docker \
   -v <path_to_docker_socket>:/var/run/docker.sock \
   -v $(pwd)/reports:/app/reports \
-  docker.io/arksec/fast-scanner:v1.0.0
+  docker.io/arksec/fast-scanner:latest
 ```
 
 If you are using containerd as your container runtime, you need to mount the socket of containerd into the scanner container, where the default path for the socket is /run/containerd/containerd.sock. Then, you can create the scanning container for the containerd scenario using the ctr tool.
 
 ```bash
-ctr images pull docker.io/arksec/fast-scanner:v1.0.0
+ctr images pull docker.io/arksec/fast-scanner:latest
 ctr run --rm -t \
   --env RUNTIME=containerd \
   --mount type=bind,src=<path_to_containerd_socket>,dst=/run/containerd/containerd.sock,options=rbind:rw \
   --mount type=bind,src=$(pwd)/reports,dst=/app/reports,options=rbind:rw \
-  docker.io/arksec/fast-scanner:v1.0.0 fast-scanner-container
+  docker.io/arksec/fast-scanner:latest fast-scanner-container
 
 ```
 
@@ -94,7 +94,7 @@ docker run --rm -it --privileged \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/config-example.yaml:/app/config/config.yaml \
   -v $(pwd)/reports:/app/reports \
-  docker.io/arksec/fast-scanner:v1.0.0
+  docker.io/arksec/fast-scanner:latest
 ```
 
 ## Retrieving the Scan Report
@@ -139,14 +139,14 @@ he report after the image scan will be stored in the reports folder in your curr
 We provide many images distributed in public image repositories across different regions. Depending on your geographic location, you can choose the nearest or most suitable repository to pull images.
 
 ```
-docker.io/arksec/fast-scanner:v1.0.0
-registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
-registry.cn-shanghai.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
-registry.cn-hangzhou.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
-registry.cn-huhehaote.aliyuncs.com/arksecurity/fast-scanner:v1.0.0
-registry.ap-northeast-1.aliyuncs.com/arksecurity/fast-scanner:v1.0.0    // Tokyo, Japan
-registry.us-west-1.aliyuncs.com/arksecurity/fast-scanner:v1.0.0    // Silicon Valley, USA
-registry.me-east-1.aliyuncs.com/arksecurity/fast-scanner:v1.0.0    // Dubai, United Arab Emirates
+docker.io/arksec/fast-scanner:latest
+registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner:latest
+registry.cn-shanghai.aliyuncs.com/arksecurity/fast-scanner:latest
+registry.cn-hangzhou.aliyuncs.com/arksecurity/fast-scanner:latest
+registry.cn-huhehaote.aliyuncs.com/arksecurity/fast-scanner:latest
+registry.ap-northeast-1.aliyuncs.com/arksecurity/fast-scanner:latest    // Tokyo, Japan
+registry.us-west-1.aliyuncs.com/arksecurity/fast-scanner:latest    // Silicon Valley, USA
+registry.me-east-1.aliyuncs.com/arksecurity/fast-scanner:latest    // Dubai, United Arab Emirates
 ```
 
 # Technical Discussion Group
