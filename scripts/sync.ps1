@@ -1,7 +1,7 @@
 # Authors: <yitong.bai@qq.com>
 
-$version = "v1.0.0"
-$local_image = "registry.arksec.cn/virgo/releases/v1/amd64/virgo-mvp:latest"
+$version = "latest"
+$local_image = "registry.arksec.cn/arkseclabs/fast-scanner:latest"
 $remote_repos = "docker.io/arksec/fast-scanner",
                 "registry.cn-beijing.aliyuncs.com/arksecurity/fast-scanner",
                 "registry.cn-shanghai.aliyuncs.com/arksecurity/fast-scanner",
