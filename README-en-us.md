@@ -97,6 +97,17 @@ docker run --rm -it --privileged \
   docker.io/arksec/fast-scanner:latest
 ```
 
+## Kubernetes Scanning
+
+If you need to conduct a security assessment of the Kubernetes cluster, you can execute the corresponding commands on a node with admin kubeconfig permissions, which is usually the Master node of Kubernetes.
+
+```bash
+docker run --rm -it --privileged \
+  -v /root/.kube/config:/k8s/config \
+  -v $(pwd)/reports:/app/reports \
+  docker.io/arksec/fast-scanner:latest
+```
+
 ## Retrieving the Scan Report
 
 he report after the image scan will be stored in the reports folder in your current working directory, with the report name in the form of reports_*. For convenience of reference, you can use tools such as SCP, SecureCRT, Xshell, WinSCP or MobaXterm to download the report file to your local computer.

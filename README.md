@@ -38,7 +38,9 @@ curl https://raw.githubusercontent.com/arkseclabs/fast-scanner/main/scripts/scan
 
 * **国产化支持程度较高：** 支持麒麟、统信、欧拉等国产操作系统，可以扫描基于此类操作系统构建的容器镜像
 
-* **一键扫描出报告：** 支持运行一次性容器，快速对服务器进行安全扫描，快速出具容器镜像的扫描安全报告
+* **更完整的安全数据：** 完全的镜像扫描，并且支持CVE中文信息展示，更完整的漏洞、病毒、隐私信息情报库，标注了CVE提供的攻击向量，标注了CVE是否是网络，特权，可被利用的提醒
+
+* **一键扫描出报告：** 支持运行一次性容器，快速对服务器进行安全扫描，快速出具容器镜像的扫描安全报表，支持 Excel & JSON，方便用户进行二次开发
 
 * **多种镜像仓库支持：** 支持主流的 Docker Registry、Harbor、JFrog、ACR、SWR。同时私有云场景支持也很好，华为阿里的私有云、博云、灵雀、秒云、KubeSphere 以及更多
 
@@ -100,6 +102,17 @@ docker run --rm -it --privileged \
   -e RUNTIME=docker \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $(pwd)/config-example.yaml:/app/config/config.yaml \
+  -v $(pwd)/reports:/app/reports \
+  docker.io/arksec/fast-scanner:latest
+```
+
+## Kubernetes 扫描
+
+如果您需要对 Kubernetes 集群进行安全性评估，您可以在拥有 admin kubeconfig 权限的节点上执行相应的指令，通常，这个节点是 Kubernetes 的 Master 节点。
+
+```bash
+docker run --rm -it --privileged \
+  -v /root/.kube/config:/k8s/config \
   -v $(pwd)/reports:/app/reports \
   docker.io/arksec/fast-scanner:latest
 ```
