@@ -97,6 +97,8 @@ harbor:
 
 2. 将身份凭证配置文件挂载至容器并运行
 
+_您需要下载完整的 [配置文件](https://raw.githubusercontent.com/arkseclabs/fast-scanner/main/config-example.yaml)，根据步骤[1]中的配置方法完成配置修改，最后将完整配置文件挂载至容器。**如果您访问不到 Github，可以在文末找到我们的联系方式！**_
+
 ```bash
 docker run --rm -it --privileged \
   -e RUNTIME=docker \
