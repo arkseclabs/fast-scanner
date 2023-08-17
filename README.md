@@ -4,7 +4,7 @@
 
 容器镜像可能包含过时的软件版本、未修复的漏洞、敏感信息泄露等安全隐患。这些隐患可能被攻击者利用，导致容器被入侵、数据泄露或者被用于发起恶意攻击。因此，定期的镜像安全扫描和更新是非常必要的。
 
-Fast Scanner 是一款专为容器场景（如Docker和Containerd）设计的镜像扫描器，能够扫服务器上容器应用的镜像。它提供两种工作模式：节点镜像扫描和仓库镜像扫描。一旦扫描完成，Fast Scanner 能生成 XLSX 格式的详细报告。
+Fast Scanner 是一款专为容器场景（如Docker和Containerd）设计的镜像扫描器，能够扫服务器上容器应用的镜像。它提供三种镜像的扫描方式：单独镜像扫描、节点镜像扫描和仓库镜像扫描。同时，它还支持对 Kubernetes 进行安全基线检测，支持单节点的行为建模的入侵检测方法。
 
 该工具充分考虑了国产化需求，能够扫描基于欧拉、麒麟、统信基础镜像构建的容器镜像，展现出强大的兼容性和适用性。
 
@@ -43,6 +43,8 @@ curl https://raw.githubusercontent.com/arkseclabs/fast-scanner/main/scripts/scan
 * **一键扫描出报告：** 支持运行一次性容器，快速对服务器进行安全扫描，快速出具容器镜像的扫描安全报表，支持 Excel & JSON，方便用户进行二次开发
 
 * **多种镜像仓库支持：** 支持主流的 Docker Registry、Harbor、JFrog、ACR、SWR。同时私有云场景支持也很好，华为阿里的私有云、博云、灵雀、秒云、KubeSphere 以及更多
+
+* **Kubernetes知此恨：** 支持对 Kubernetes 进行安全基线检测
 
 # 运行 Fast Scanner
 
@@ -108,6 +110,19 @@ docker run --rm -it --privileged \
   docker.io/arksec/fast-scanner:latest
 ```
 
+## 单独镜像扫描
+
+若需对节点中指定镜像进行扫描，请按照以下指令操作。
+
+```bash
+docker run --rm -it --privileged \
+  -e RUNTIME=docker \
+  -v <path_to_docker_socket>:/var/run/docker.sock \
+  -v $(pwd)/reports:/app/reports \
+  docker.io/arksec/fast-scanner:latest /app/lever -i <image_to_scan>
+```
+
+
 ## Kubernetes 扫描
 
 如果您需要对 Kubernetes 集群进行安全性评估，您可以在拥有 admin kubeconfig 权限的节点上执行相应的指令，通常，这个节点是 Kubernetes 的 Master 节点。
@@ -119,11 +134,29 @@ docker run --rm -it --privileged \
   docker.io/arksec/fast-scanner:latest
 ```
 
+## 单节点行为建模
+
+```bash
+docker run --rm -it --name lever \
+  --privileged \
+  --pid=host \
+  --cgroupns=host \
+  -p 32345:8080 \
+  -v /etc/os-release:/etc/os-release-host:ro \
+  -v /boot/config-$(uname -r):/boot/config-$(uname -r):ro \
+  docker.io/arksec/fast-scanner:latest /app/lever watch
+```
+
 ## 获取扫描报告
 
 镜像扫描后的报告会被存放在您当前工作目录的 `reports` 文件夹内，其报告名以 `reports_*` 的形式命名。为了方便查阅，您可以使用如SCP、SecureCRT、Xshell、WinSCP 或者 MobaXterm 等工具将报告文件下载到本地电脑中。
 
 ![](./files/excel_report_example.png)
+
+
+启动建模后，访问 `http://<node_ipaddress>:32345` 可以访问到行为建模对比。左侧将显示主机产生的事件。启动建模后，左侧将显示主机产生的事件。启动建模后，左侧将显示主机产生的事件。
+
+![](./files/model_report_example.png)
 
 # 兼容程度
 
